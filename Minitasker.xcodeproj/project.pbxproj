@@ -7,42 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4236144128545AE900C68374 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236144028545AE900C68374 /* Tests_iOS.swift */; };
-		4236144328545AE900C68374 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236144228545AE900C68374 /* Tests_iOSLaunchTests.swift */; };
 		4236145028545AE900C68374 /* MinitaskerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236142828545AE800C68374 /* MinitaskerApp.swift */; };
-		4236145228545AE900C68374 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236142928545AE800C68374 /* ContentView.swift */; };
-		4236145428545AE900C68374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4236142A28545AE900C68374 /* Assets.xcassets */; };
+		4236146528545B7300C68374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4236146428545B7300C68374 /* Assets.xcassets */; };
+		4236146F28545BA400C68374 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146628545BA400C68374 /* Task.swift */; };
+		4236147028545BA400C68374 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146728545BA400C68374 /* TaskCell.swift */; };
+		4236147128545BA400C68374 /* TaskReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146828545BA400C68374 /* TaskReadView.swift */; };
+		4236147328545BA400C68374 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146A28545BA400C68374 /* Model.swift */; };
+		4236147528545BA400C68374 /* Model+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146C28545BA400C68374 /* Model+UI.swift */; };
+		4236147628545BA400C68374 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146D28545BA400C68374 /* TaskList.swift */; };
+		4236147728545BA400C68374 /* TaskWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146E28545BA400C68374 /* TaskWriteView.swift */; };
+		42361479285460C600C68374 /* TaskList+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42361478285460C600C68374 /* TaskList+Filters.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4236143D28545AE900C68374 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4236142328545AE800C68374 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4236142E28545AE900C68374;
-			remoteInfo = "Minitasker (iOS)";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4236142828545AE800C68374 /* MinitaskerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinitaskerApp.swift; sourceTree = "<group>"; };
-		4236142928545AE800C68374 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4236142A28545AE900C68374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4236142F28545AE900C68374 /* Minitasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minitasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4236143C28545AE900C68374 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4236144028545AE900C68374 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
-		4236144228545AE900C68374 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		4236146428545B7300C68374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4236146628545BA400C68374 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		4236146728545BA400C68374 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		4236146828545BA400C68374 /* TaskReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskReadView.swift; sourceTree = "<group>"; };
+		4236146A28545BA400C68374 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4236146C28545BA400C68374 /* Model+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+UI.swift"; sourceTree = "<group>"; };
+		4236146D28545BA400C68374 /* TaskList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		4236146E28545BA400C68374 /* TaskWriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskWriteView.swift; sourceTree = "<group>"; };
+		42361478285460C600C68374 /* TaskList+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskList+Filters.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4236142C28545AE900C68374 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4236143928545AE900C68374 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,38 +47,34 @@
 		4236142228545AE800C68374 = {
 			isa = PBXGroup;
 			children = (
-				4236142728545AE800C68374 /* Shared */,
-				4236143F28545AE900C68374 /* Tests iOS */,
+				4236146428545B7300C68374 /* Assets.xcassets */,
+				4236142728545AE800C68374 /* Model */,
+				4236142828545AE800C68374 /* MinitaskerApp.swift */,
+				4236146728545BA400C68374 /* TaskCell.swift */,
+				4236146D28545BA400C68374 /* TaskList.swift */,
+				42361478285460C600C68374 /* TaskList+Filters.swift */,
+				4236146828545BA400C68374 /* TaskReadView.swift */,
+				4236146E28545BA400C68374 /* TaskWriteView.swift */,
 				4236143028545AE900C68374 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4236142728545AE800C68374 /* Shared */ = {
+		4236142728545AE800C68374 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4236142828545AE800C68374 /* MinitaskerApp.swift */,
-				4236142928545AE800C68374 /* ContentView.swift */,
-				4236142A28545AE900C68374 /* Assets.xcassets */,
+				4236146628545BA400C68374 /* Task.swift */,
+				4236146A28545BA400C68374 /* Model.swift */,
+				4236146C28545BA400C68374 /* Model+UI.swift */,
 			);
-			path = Shared;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4236143028545AE900C68374 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				4236142F28545AE900C68374 /* Minitasker.app */,
-				4236143C28545AE900C68374 /* Tests iOS.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4236143F28545AE900C68374 /* Tests iOS */ = {
-			isa = PBXGroup;
-			children = (
-				4236144028545AE900C68374 /* Tests_iOS.swift */,
-				4236144228545AE900C68374 /* Tests_iOSLaunchTests.swift */,
-			);
-			path = "Tests iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,24 +97,6 @@
 			productReference = 4236142F28545AE900C68374 /* Minitasker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4236143B28545AE900C68374 /* Tests iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4236145E28545AE900C68374 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
-			buildPhases = (
-				4236143828545AE900C68374 /* Sources */,
-				4236143928545AE900C68374 /* Frameworks */,
-				4236143A28545AE900C68374 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4236143E28545AE900C68374 /* PBXTargetDependency */,
-			);
-			name = "Tests iOS";
-			productName = "Tests iOS";
-			productReference = 4236143C28545AE900C68374 /* Tests iOS.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -139,10 +109,6 @@
 				TargetAttributes = {
 					4236142E28545AE900C68374 = {
 						CreatedOnToolsVersion = 13.3;
-					};
-					4236143B28545AE900C68374 = {
-						CreatedOnToolsVersion = 13.3;
-						TestTargetID = 4236142E28545AE900C68374;
 					};
 				};
 			};
@@ -160,7 +126,6 @@
 			projectRoot = "";
 			targets = (
 				4236142E28545AE900C68374 /* Minitasker (iOS) */,
-				4236143B28545AE900C68374 /* Tests iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -170,14 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4236145428545AE900C68374 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4236143A28545AE900C68374 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				4236146528545B7300C68374 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,29 +146,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4236145228545AE900C68374 /* ContentView.swift in Sources */,
+				4236147328545BA400C68374 /* Model.swift in Sources */,
+				4236147728545BA400C68374 /* TaskWriteView.swift in Sources */,
+				4236147028545BA400C68374 /* TaskCell.swift in Sources */,
+				42361479285460C600C68374 /* TaskList+Filters.swift in Sources */,
+				4236147128545BA400C68374 /* TaskReadView.swift in Sources */,
+				4236147628545BA400C68374 /* TaskList.swift in Sources */,
+				4236147528545BA400C68374 /* Model+UI.swift in Sources */,
+				4236146F28545BA400C68374 /* Task.swift in Sources */,
 				4236145028545AE900C68374 /* MinitaskerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4236143828545AE900C68374 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4236144328545AE900C68374 /* Tests_iOSLaunchTests.swift in Sources */,
-				4236144128545AE900C68374 /* Tests_iOS.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4236143E28545AE900C68374 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4236142E28545AE900C68374 /* Minitasker (iOS) */;
-			targetProxy = 4236143D28545AE900C68374 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4236145628545AE900C68374 /* Debug */ = {
@@ -385,47 +333,6 @@
 			};
 			name = Release;
 		};
-		4236145F28545AE900C68374 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57C78B97UA;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cz.raskavil.Tests-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Minitasker (iOS)";
-			};
-			name = Debug;
-		};
-		4236146028545AE900C68374 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57C78B97UA;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cz.raskavil.Tests-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Minitasker (iOS)";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,15 +350,6 @@
 			buildConfigurations = (
 				4236145928545AE900C68374 /* Debug */,
 				4236145A28545AE900C68374 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4236145E28545AE900C68374 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4236145F28545AE900C68374 /* Debug */,
-				4236146028545AE900C68374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
