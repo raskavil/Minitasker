@@ -48,6 +48,9 @@ class DataModel: ObservableObject {
         if let index = tasks.firstIndex(where: { $0.id == task.id }) {
             tasks.remove(at: index)
         }
+        if let index = pinnedTasks.first(where: { $0 == task.id }) {
+            pinnedTasks.remove(at: index)
+        }
     }
     
     func updateTask(_ task: Task) {

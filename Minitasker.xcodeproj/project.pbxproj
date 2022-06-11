@@ -17,6 +17,10 @@
 		4236147628545BA400C68374 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146D28545BA400C68374 /* TaskList.swift */; };
 		4236147728545BA400C68374 /* TaskWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236146E28545BA400C68374 /* TaskWriteView.swift */; };
 		42361479285460C600C68374 /* TaskList+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42361478285460C600C68374 /* TaskList+Filters.swift */; };
+		4236148128547E8400C68374 /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236148028547E8400C68374 /* QuickAction.swift */; };
+		423614832854826400C68374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423614822854826400C68374 /* AppDelegate.swift */; };
+		4236148F285489FE00C68374 /* whiteIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4236148B285489FE00C68374 /* whiteIcon@3x.png */; };
+		42361490285489FE00C68374 /* whiteIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4236148C285489FE00C68374 /* whiteIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,11 @@
 		4236146D28545BA400C68374 /* TaskList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		4236146E28545BA400C68374 /* TaskWriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskWriteView.swift; sourceTree = "<group>"; };
 		42361478285460C600C68374 /* TaskList+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskList+Filters.swift"; sourceTree = "<group>"; };
+		4236147F28547CA600C68374 /* Minitasker--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Minitasker--iOS--Info.plist"; sourceTree = "<group>"; };
+		4236148028547E8400C68374 /* QuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
+		423614822854826400C68374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4236148B285489FE00C68374 /* whiteIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteIcon@3x.png"; sourceTree = "<group>"; };
+		4236148C285489FE00C68374 /* whiteIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,14 +56,16 @@
 		4236142228545AE800C68374 = {
 			isa = PBXGroup;
 			children = (
-				4236146428545B7300C68374 /* Assets.xcassets */,
+				4236148A285484C700C68374 /* Resources */,
 				4236142728545AE800C68374 /* Model */,
 				4236142828545AE800C68374 /* MinitaskerApp.swift */,
 				4236146728545BA400C68374 /* TaskCell.swift */,
 				4236146D28545BA400C68374 /* TaskList.swift */,
+				423614822854826400C68374 /* AppDelegate.swift */,
 				42361478285460C600C68374 /* TaskList+Filters.swift */,
 				4236146828545BA400C68374 /* TaskReadView.swift */,
 				4236146E28545BA400C68374 /* TaskWriteView.swift */,
+				4236148028547E8400C68374 /* QuickAction.swift */,
 				4236143028545AE900C68374 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +86,17 @@
 				4236142F28545AE900C68374 /* Minitasker.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4236148A285484C700C68374 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4236146428545B7300C68374 /* Assets.xcassets */,
+				4236147F28547CA600C68374 /* Minitasker--iOS--Info.plist */,
+				4236148C285489FE00C68374 /* whiteIcon@2x.png */,
+				4236148B285489FE00C68374 /* whiteIcon@3x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +157,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4236148F285489FE00C68374 /* whiteIcon@3x.png in Resources */,
 				4236146528545B7300C68374 /* Assets.xcassets in Resources */,
+				42361490285489FE00C68374 /* whiteIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423614832854826400C68374 /* AppDelegate.swift in Sources */,
 				4236147328545BA400C68374 /* Model.swift in Sources */,
 				4236147728545BA400C68374 /* TaskWriteView.swift in Sources */,
 				4236147028545BA400C68374 /* TaskCell.swift in Sources */,
@@ -153,6 +178,7 @@
 				4236147128545BA400C68374 /* TaskReadView.swift in Sources */,
 				4236147628545BA400C68374 /* TaskList.swift in Sources */,
 				4236147528545BA400C68374 /* Model+UI.swift in Sources */,
+				4236148128547E8400C68374 /* QuickAction.swift in Sources */,
 				4236146F28545BA400C68374 /* Task.swift in Sources */,
 				4236145028545AE900C68374 /* MinitaskerApp.swift in Sources */,
 			);
@@ -273,14 +299,15 @@
 		4236145928545AE900C68374 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = blackIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 57C78B97UA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Resources/Minitasker--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -292,7 +319,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cz.raskavil.Minitasker;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.raskavil.minitasker;
 				PRODUCT_NAME = Minitasker;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -304,14 +331,15 @@
 		4236145A28545AE900C68374 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = blackIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 57C78B97UA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Resources/Minitasker--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -323,7 +351,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cz.raskavil.Minitasker;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.raskavil.minitasker;
 				PRODUCT_NAME = Minitasker;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;

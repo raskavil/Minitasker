@@ -2,17 +2,15 @@ import SwiftUI
 
 struct TaskList: View {
     
-    @ObservedObject var dataModel: DataModel
+    @EnvironmentObject var actionService: QuickActionService
+    @Environment(\.scenePhase) var scenePhase
+    
+    @ObservedObject var dataModel = DataModel()
     @State var isWriteViewPresented = false
-    @State private var filters: Filters {
+    @State private var filters: Filters = Filters.userDefaultsValue ?? .init() {
         didSet {
             filters.saveIntoUserDefaults()
         }
-    }
-    
-    init() {
-        self.dataModel = DataModel()
-        self.filters = Filters.userDefaultsValue ?? .init()
     }
     
     var body: some View {
@@ -109,7 +107,22 @@ struct TaskList: View {
         .onDisappear {
             dataModel.isListVisible = false
         }
-       
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .active {
+                switch actionService.action {
+                    case .newTask:
+                        if isWriteViewPresented == false {
+                            isWriteViewPresented = true
+                        }
+                    case .iconChange:
+                        let iconName = UIApplication.shared.alternateIconName == "whiteIcon" ? nil : "whiteIcon"
+                        UIApplication.shared.setAlternateIconName(iconName)
+                    case .none:
+                        return
+                }
+                
+            }
+        }
     }
     
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>whiteIcon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>whiteIcon</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>NewTask</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Add new task</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>plus</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Change icon</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>IconChange</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>app</string>
+		</dict>
+	</array>
+</dict>
+</plist>
