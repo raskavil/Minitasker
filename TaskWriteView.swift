@@ -3,7 +3,6 @@ import SwiftUI
 struct TaskWriteView: View {
     
     struct Model {
-       
         let id: Int
         var title: String
         var priority: Task.Priority
@@ -13,24 +12,15 @@ struct TaskWriteView: View {
         var deadline: Date
         var isDateActivated: Bool
         
-        static let defaultText = """
-        Here you can put description of your task
-        Text formatting examples:
-        - *Italic*
-        - **Bold**
-        - ***Bold Italic***
-        - [Link name](https://example.com)
-        """
-        
         static func defaultModel(id: Int) -> Self {
             .init(
                 id: id,
                 title: "New task",
-                priority: .high,
+                priority: .medium,
                 state: .todo,
-                description: Self.defaultText,
+                description: .localized("task_write_view.default_text"),
                 subtasks: [("Subtask", false)],
-                deadline: .now,
+                deadline: Calendar.current.startOfDay(for: .now),
                 isDateActivated: false
             )
         }
@@ -52,12 +42,14 @@ struct TaskWriteView: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                Button(role: .cancel, action: { dismiss() }, label: { Text("Cancel") })
+                Button(role: .cancel, action: { dismiss() }, label: { Text(String.localized("general.cancel")) })
                     .foregroundColor(.primary)
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: { taskUpdated(model.task); dismiss() }, label: { Text("Done").bold() })
-                    .foregroundColor(.primary)
+                Button(
+                    action: { taskUpdated(model.task); dismiss() },
+                    label: { Text(String.localized("general.done")).bold() }
+                ).foregroundColor(.primary)
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -107,7 +99,7 @@ struct TaskWriteView: View {
     @ViewBuilder private var deadlineView: some View {
         Rectangle().frame(height: 1)
         HStack {
-            Text("Deadline:").fontWeight(.bold)
+            Text(String.localized("task_read_view.deadline")).fontWeight(.bold)
             Spacer()
             Toggle("", isOn: $model.isDateActivated).tint(.primary)
         }
@@ -118,10 +110,11 @@ struct TaskWriteView: View {
     @ViewBuilder private var subtasksView: some View {
         Rectangle().frame(height: 1)
         HStack {
-            Text("Subtasks:").fontWeight(.bold)
+            Text(String.localized("task_read_view.subtasks")).fontWeight(.bold)
             Spacer()
-            Button(action: { model.subtasks.append((("New subtask"), false)) }) { Image(systemName: "plus") }
-                .foregroundColor(.primary)
+            Button(
+                action: { model.subtasks.append(((.localized("task_write_view.new_subtask")), false)) }
+            ) { Image(systemName: "plus") }.foregroundColor(.primary)
         }
         ForEach(model.subtasks.indices, id: \.self) { index in
             HStack {

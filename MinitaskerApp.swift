@@ -18,3 +18,22 @@ struct MinitaskerApp: App {
         }
     }
 }
+
+extension String {
+    
+    static func localized(_ key: String) -> String {
+        let value = NSLocalizedString(key, comment: "")
+        
+        if value != key {
+            return value
+        }
+        
+        guard
+            let path = Bundle.main.path(forResource: "en", ofType: "lproj"),
+            let bundle = Bundle(path: path)
+        else { return value }
+        
+        return NSLocalizedString(key, bundle: bundle, comment: "")
+    }
+    
+}

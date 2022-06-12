@@ -11,19 +11,6 @@ struct TaskCell: View {
         let deadlineText: String?
         let totalSubtasks: Int?
         let doneSubtasks: Int?
-        
-        static func mockValue(id: Int) -> Self {
-            TaskCell.Model(
-                id: id,
-                isPinned: true,
-                title: "Bring an attention to the third world problems",
-                state: "In progress",
-                icon: "chevron.up.square.fill",
-                deadlineText: nil,
-                totalSubtasks: 5,
-                doneSubtasks: 3
-            )
-        }
     }
     
     @State var model: Model
@@ -68,4 +55,5 @@ struct TaskCell: View {
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.primary, lineWidth: 1))
     }
 }
+
 

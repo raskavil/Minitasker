@@ -1,0 +1,51 @@
+
+"task_list.delete" = "Delete";
+
+"task_list.pin" = "Pin";
+
+"task_list.hide_done" = "Hide Done tasks";
+
+"task_list.sorting" = "Sorting";
+
+"task_list.title" = "Tasks";
+
+"task_list.past_deadline" = "Past the deadline";
+
+"task_list.days_remaining" = "%d days remaining";
+
+"task.priority.low" = "Low";
+
+"task.priority.medium" = "Medium";
+
+"task.priority.high" = "High";
+
+"task.state.todo" = "To do";
+
+"task.state.in_progress" = "In progress";
+
+"task.state.done" = "Done";
+
+"filters.sorting.priority" = "Priority";
+
+"filters.sorting.id" = "ID";
+
+"filters.sorting.title" = "Title";
+
+"filters.sorting.deadline" = "Deadline";
+
+"task_read_view.deadline" = "Deadline:";
+
+"task_read_view.subtasks" = "Subtasks:";
+
+"task_write_view.new_subtask" = "New subtask";
+
+"general.done" = "Done";
+
+"general.cancel" = "Cancel";
+
+"task_write_view.default_text" = "Here you can put description of your task
+Text formatting examples:
+- *Italic*
+- **Bold**
+- ***Bold Italic***
+- [Link name](https://example.com)";

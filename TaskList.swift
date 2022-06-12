@@ -34,12 +34,12 @@ struct TaskList: View {
                                     withAnimation(.linear) { dataModel.removeTask(task) }
                                 })
                             ) {
-                                Label("Delete", systemImage: "trash")
+                                Label(String.localized("task_list.delete"), systemImage: "trash")
                             }
                         }
                         .swipeActions(edge: .leading, allowsFullSwipe: true) {
                             Button(action: { dataModel.pinnedTasks.toggle(task.id) }) {
-                                Label("Pin", systemImage: "pin").tint(.yellow)
+                                Label(String.localized("task_list.pin"), systemImage: "pin").tint(.yellow)
                             }
                         }
                         .listRowSeparator(.hidden)
@@ -51,19 +51,19 @@ struct TaskList: View {
             Menu {
                 Button(action: { filters.hideDoneTasks.toggle() }) {
                     HStack {
-                        Text("Hide Done tasks")
+                        Text(String.localized("task_list.hide_done"))
                         if filters.hideDoneTasks {
                             Image(systemName: "checkmark")
                         }
                     }
                 }
-                Menu("Sorting") {
+                Menu(String.localized("task_list.sorting")) {
                     ForEach(Filters.Sort.allCases, id: \.rawValue) { sortCase in
                         Button {
                             withAnimation(.linear) { filters.sort = sortCase }
                         } label: {
                             HStack {
-                                Text(sortCase.rawValue)
+                                Text(sortCase.uiText)
                                 if filters.sort == sortCase {
                                     Image(systemName: "checkmark")
                                 }
@@ -86,7 +86,7 @@ struct TaskList: View {
             .foregroundColor(.primary)
             .padding()
         }
-        .navigationBarTitle("Tasks", displayMode: .automatic)
+        .navigationBarTitle(String.localized("task_list.title"), displayMode: .automatic)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: { isWriteViewPresented.toggle() }) { Image(systemName: "plus") }

@@ -1,20 +1,5 @@
 import SwiftUI
 
-let markdownText = """
-Because the mentiones piece of information has been *lost*, we need to introduce several **important** options. Namely:
-- Check the servers for missing info
-- Improve the security to prevent future attacks
-- Investigate information to prevent
-# Hello
-1. First item
-2. Second item
-3. Third item
-4. Fourth item
-All these things have to be done prior to any future user data handling.
-
-For more information visit [apple.com](apple.com)!
-"""
-
 struct TaskReadView: View {
     
     struct Model {
@@ -39,18 +24,6 @@ struct TaskReadView: View {
             } catch {
                 return AttributedString(description)
             }
-        }
-        
-        static var defaultModel: Self {
-            .init(
-                id: 14, 
-                title: "Modify the information",
-                priority: .high,
-                state: .todo,
-                description: markdownText,
-                subtasks: [("Hello", false), ("Preparation", true)],
-                deadline: .now
-            )
         }
     }
 
@@ -132,7 +105,7 @@ struct TaskReadView: View {
     @ViewBuilder private var deadlineView: some View {
         if let deadlineString = model.deadline?.string {
             Rectangle().frame(height: 1)
-            Text("Deadline:").fontWeight(.bold)
+            Text(String.localized("task_read_view.deadline")).fontWeight(.bold)
             Text(deadlineString)
         } else {
             EmptyView()
@@ -142,7 +115,7 @@ struct TaskReadView: View {
     @ViewBuilder private var subtasksView: some View {
         if !model.subtasks.isEmpty {
             Rectangle().frame(height: 1)
-            Text("Subtasks:").fontWeight(.bold)
+            Text(String.localized("task_read_view.subtasks")).fontWeight(.bold)
             ForEach(model.subtasks.indices, id: \.self) { index in
                 Button(action: { model.subtasks[index].status.toggle() }) {
                     HStack(spacing: 8) {
@@ -163,8 +136,33 @@ struct TaskReadView: View {
 
 struct TaskReadView_Previews: PreviewProvider {
     
+    static let markdownText = """
+    Because the mentiones piece of information has been *lost*, we need to introduce several **important** options. Namely:
+    - Check the servers for missing info
+    - Improve the security to prevent future attacks
+    - Investigate information to prevent
+    # Hello
+    1. First item
+    2. Second item
+    3. Third item
+    4. Fourth item
+    All these things have to be done prior to any future user data handling.
+
+    For more information visit [apple.com](apple.com)!
+    """
+    
+    static let model = TaskReadView.Model(
+        id: 14,
+        title: "Modify the information",
+        priority: .high,
+        state: .todo,
+        description: markdownText,
+        subtasks: [("Hello", false), ("Preparation", true)],
+        deadline: .now
+    )
+
     static var previews: some View {
-        TaskReadView(model: TaskReadView.Model.defaultModel, taskUpdated: { _ in return })
+        TaskReadView(model: model, taskUpdated: { _ in return })
     }
 }
 

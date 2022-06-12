@@ -15,9 +15,9 @@ extension TaskCell.Model {
             if daysRemaining >= 7 {
                 deadlineText = deadline.string
             } else if daysRemaining < 0 {
-                deadlineText = "Past the deadline"
+                deadlineText = .localized("task_list.past_deadline")
             } else {
-                deadlineText = "\(daysRemaining) days remaining"
+                deadlineText = String(format: .localized("task_list.days_remaining"), daysRemaining)
             }
         } else {
             deadlineText = nil
@@ -51,9 +51,9 @@ extension Task.Priority {
     
     var uiText: String {
         switch self {
-            case .low: return "Low"
-            case .medium: return "Medium"
-            case .high: return "High"
+            case .low:      return .localized("task.priority.low")
+            case .medium:   return .localized("task.priority.medium")
+            case .high:     return .localized("task.priority.high")
         }
     }
     
@@ -71,9 +71,9 @@ extension Task.State {
     
     var uiText: String {
         switch self {
-            case .todo: return "To do"
-            case .inProgress: return "In progress"
-            case .done: return "Done"
+            case .todo:         return .localized("task.state.todo")
+            case .inProgress:   return .localized("task.state.in_progress")
+            case .done:         return .localized("task.state.done")
         }
     }
 }

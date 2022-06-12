@@ -1,0 +1,51 @@
+
+"task_list.delete" = "Smazat";
+
+"task_list.pin" = "Připnout";
+
+"task_list.hide_done" = "Skrýt hotové tasky";
+
+"task_list.sorting" = "Řazení";
+
+"task_list.title" = "Tasky";
+
+"task_list.past_deadline" = "Po deadlinu";
+
+"task_list.days_remaining" = "Zbývá %d dní";
+
+"task.priority.low" = "Nízká";
+
+"task.priority.medium" = "Střední";
+
+"task.priority.high" = "Vysoká";
+
+"task.state.todo" = "To do";
+
+"task.state.in_progress" = "Rozpracovaný";
+
+"task.state.done" = "Hotovo";
+
+"filters.sorting.priority" = "Priorita";
+
+"filters.sorting.id" = "ID";
+
+"filters.sorting.title" = "Název";
+
+"filters.sorting.deadline" = "Deadline";
+
+"task_read_view.deadline" = "Deadline:";
+
+"task_read_view.subtasks" = "Subtasky:";
+
+"task_write_view.new_subtask" = "Nový subtask";
+
+"general.done" = "Hotovo";
+
+"general.cancel" = "Zrušit";
+
+"task_write_view.default_text" = "Zde můžete vložit text Tasku
+Příklady formátování textu:
+- *Italica*
+- **Tučně**
+- ***Tučně italica***
+- [Název odkazu](https://example.com)";

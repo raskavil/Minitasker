@@ -11,6 +11,15 @@ extension TaskList {
             case id = "ID"
             case title = "Title"
             case deadline = "Deadline"
+            
+            var uiText: String {
+                switch self {
+                    case .priority: return .localized("filters.sorting.priority")
+                    case .id: return .localized("filters.sorting.id")
+                    case .title: return .localized("filters.sorting.title")
+                    case .deadline: return .localized("filters.sorting.deadline")
+                }
+            }
         }
         
         var searchText = ""
