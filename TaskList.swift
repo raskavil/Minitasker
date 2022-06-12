@@ -120,7 +120,7 @@ struct TaskList: View {
                     case .none:
                         return
                 }
-                
+                actionService.action = nil
             }
         }
     }
