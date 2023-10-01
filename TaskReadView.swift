@@ -1,35 +1,10 @@
 import SwiftUI
 
 struct TaskReadView: View {
-    
-    struct Model {
-        let id: Int
-        let title: String
-        let priority: Task.Priority
-        var state: Task.State
-        let description: String
-        var subtasks: [(name: String, status: Bool)]
-        let deadline: Date?
-        
-        var attributedDescription: AttributedString {
-            do {
-                return try AttributedString(
-                    markdown: description,
-                    options: .init(
-                        allowsExtendedAttributes: false,
-                        interpretedSyntax: .inlineOnly,
-                        failurePolicy: .returnPartiallyParsedIfPossible
-                    )
-                )
-            } catch {
-                return AttributedString(description)
-            }
-        }
-    }
 
-    @State var model: Model {
+    @State var model: Task {
         didSet {
-            taskUpdated(model.task)
+            taskUpdated(model)
         }
     }
     @State var isWriteViewPresented: Bool = false
@@ -55,7 +30,7 @@ struct TaskReadView: View {
         .navigationBarTitle("", displayMode: .inline)
         .sheet(isPresented: $isWriteViewPresented) {
             NavigationView {
-                TaskWriteView(model: .init(task: model.task), taskUpdated: { self.model = .init(task: $0) })
+                TaskWriteView(model: .init(task: model), taskUpdated: { self.model = $0 })
             }
         }
     }
@@ -75,7 +50,7 @@ struct TaskReadView: View {
                 content: {
                     VStack {
                         ForEach(Task.State.allCases, id: \.rawValue) { state in
-                            Button(action: { model.state = state }) {
+                            Button(action: { model = model.update(lens: Task.state, to: state) }) {
                                 HStack {
                                     Text(state.uiText)
                                     if state == model.state {
@@ -117,12 +92,17 @@ struct TaskReadView: View {
             Rectangle().frame(height: 1)
             Text(String.localized("task_read_view.subtasks")).fontWeight(.bold)
             ForEach(model.subtasks.indices, id: \.self) { index in
-                Button(action: { model.subtasks[index].status.toggle() }) {
+                let subtask = model.subtasks[index]
+                Button(action: {
+                    var newSubtasks = model.subtasks
+                    newSubtasks[index].done.toggle()
+                    model = model.update(lens: Task.subtasks, to: newSubtasks)
+                }) {
                     HStack(spacing: 8) {
-                        Image(systemName: model.subtasks[index].status ? "star.square" : "square")
+                        Image(systemName: subtask.done ? "star.square" : "square")
                             .resizable()
                             .frame(width: 20, height: 20)
-                        Text(model.subtasks[index].name)
+                        Text(subtask.title)
                         
                     }
                 }
@@ -130,6 +110,23 @@ struct TaskReadView: View {
             }
         } else {
             EmptyView()
+        }
+    }
+}
+
+extension Task {
+    var attributedDescription: AttributedString {
+        do {
+            return try AttributedString(
+                markdown: description,
+                options: .init(
+                    allowsExtendedAttributes: false,
+                    interpretedSyntax: .inlineOnly,
+                    failurePolicy: .returnPartiallyParsedIfPossible
+                )
+            )
+        } catch {
+            return AttributedString(description)
         }
     }
 }
@@ -150,19 +147,9 @@ struct TaskReadView_Previews: PreviewProvider {
 
     For more information visit [apple.com](apple.com)!
     """
-    
-    static let model = TaskReadView.Model(
-        id: 14,
-        title: "Modify the information",
-        priority: .high,
-        state: .todo,
-        description: markdownText,
-        subtasks: [("Hello", false), ("Preparation", true)],
-        deadline: .now
-    )
 
     static var previews: some View {
-        TaskReadView(model: model, taskUpdated: { _ in return })
+        TaskReadView(model: .dummy, taskUpdated: { _ in return })
     }
 }
 

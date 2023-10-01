@@ -2,18 +2,7 @@ import SwiftUI
 
 struct TaskCell: View {
     
-    struct Model: Identifiable, Hashable {
-        let id: Int
-        let isPinned: Bool
-        let title: String
-        let state: String
-        let icon: String
-        let deadlineText: String?
-        let totalSubtasks: Int?
-        let doneSubtasks: Int?
-    }
-    
-    @State var model: Model
+    @State var model: Task
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -26,11 +15,11 @@ struct TaskCell: View {
                     .font(.headline)
             }
             HStack(spacing: 8) {
-                Image(systemName: model.icon)
+                Image(systemName: model.priority.icon)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(.primary)
-                Text(model.state)
+                Text(model.state.uiText)
             }
             if let deadlineText = model.deadlineText {
                 HStack(spacing: 8) {
@@ -40,13 +29,13 @@ struct TaskCell: View {
                     Text(deadlineText)
                 }
             }
-            if let totalSubtasks = model.totalSubtasks, let doneSubtasks = model.doneSubtasks, totalSubtasks > 0 {
+            if let subtasks = model.subtaskCount {
                 HStack {
                     Image(systemName: "list.star")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .padding(2)
-                    Text("\(doneSubtasks) / \(totalSubtasks)")
+                    Text("\(subtasks.done) / \(subtasks.total)")
                 }
             }
         }
@@ -56,4 +45,28 @@ struct TaskCell: View {
     }
 }
 
+extension Task {
 
+    var subtaskCount: (total: Int, done: Int)? {
+        if !subtasks.isEmpty {
+            return (subtasks.count, subtasks.filter(\.done).count)
+        } else {
+            return nil
+        }
+    }
+    
+    var deadlineText: String? {
+        if let deadline = deadline, let daysRemaining = Calendar.current.numberOfDaysBetween(.now, and: deadline) {
+            if daysRemaining >= 7 {
+                return deadline.string
+            } else if daysRemaining < 0 {
+                return .localized("task_list.past_deadline")
+            } else {
+                return String(format: .localized("task_list.days_remaining"), daysRemaining)
+            }
+        } else {
+            return nil
+        }
+    }
+    
+}

@@ -1,17 +1,21 @@
 import Foundation
 import Combine
+import SupportPackage
+
+struct Model {
+    let tasks: [Task]
+    let groups: [Group]
+    
+    var timestamp: Date {
+        (tasks.map(\.timestamp) + groups.map(\.timestamp)).sorted().last ?? .init()
+    }
+}
 
 class DataModel: ObservableObject {
     
     private static let pinnedTasksKey = "minitasker.pinnedTasks"
     
-    var isListVisible: Bool = false {
-        didSet {
-            if isListVisible {
-                objectWillChange.send()
-            }
-        }
-    }
+    @Published var isListVisible: Bool = false
     
     var tasks: [Task] {
         didSet {
@@ -25,12 +29,6 @@ class DataModel: ObservableObject {
             }
         }
     }
-    
-    @Published var pinnedTasks: [Int] {
-        didSet {
-            (try? JSONEncoder().encode(pinnedTasks)).map { UserDefaults.standard.set($0, forKey: Self.pinnedTasksKey) }
-        }
-    }
 
     init() {
         do {
@@ -39,28 +37,15 @@ class DataModel: ObservableObject {
             tasks = []
             print("Reading tasks failed!")
         }
-        
-        pinnedTasks = UserDefaults.standard.data(forKey: Self.pinnedTasksKey)
-            .flatMap { try? JSONDecoder().decode([Int].self, from: $0) } ?? []
     }
     
     func removeTask(_ task: Task) {
         tasks.removeIfPresent(task)
-        pinnedTasks.removeIfPresent(task.id)
     }
     
     func updateTask(_ task: Task) {
         if let index = tasks.firstIndex(where: { $0.id == task.id }) {
             tasks[index] = task
-        }
-    }
-    
-    func reloadTasks() {
-        do {
-            tasks = try Self.tasksFromFile()
-        } catch {
-            tasks = []
-            print("Reading tasks failed!")
         }
     }
     
@@ -90,14 +75,4 @@ class DataModel: ObservableObject {
         let data = try JSONEncoder().encode(tasks)
         try data.write(to: fileURL)
     }
-}
-
-extension Array where Element: Equatable {
-    
-    mutating func removeIfPresent(_ element: Element) {
-        if let index = firstIndex(of: element) {
-            remove(at: index)
-        }
-    }
-    
 }

@@ -15,13 +15,13 @@ struct TaskList: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            List(filters.filter(dataModel.tasks, pinnedTasks: dataModel.pinnedTasks), id: \.self) { model in
+            List(filters.filter(dataModel.tasks), id: \.self) { model in
                 if let task = dataModel.tasks.first(where: { $0.id == model.id }) {
                     ZStack {
                         TaskCell(model: model)
                         NavigationLink(
                             destination: TaskReadView(
-                                model: .init(task: task),
+                                model: model,
                                 taskUpdated: { dataModel.updateTask($0) }
                             )
                         ) { EmptyView() }.opacity(0)
@@ -38,7 +38,9 @@ struct TaskList: View {
                             }
                         }
                         .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            Button(action: { dataModel.pinnedTasks.toggle(task.id) }) {
+                            Button(action: {
+                                dataModel.updateTask(model.update(lens: Task.isPinned, to: !model.isPinned))
+                            }) {
                                 Label(String.localized("task_list.pin"), systemImage: "pin").tint(.yellow)
                             }
                         }
@@ -96,7 +98,7 @@ struct TaskList: View {
         .sheet(isPresented: $isWriteViewPresented) {
             NavigationView {
                 TaskWriteView(
-                    model: .defaultModel(id: (dataModel.tasks.map(\.id).max() ?? 0) + 1),
+                    model: .defaultModel(id: UUID().uuidString),
                     taskUpdated: { self.dataModel.tasks.append($0) }
                 )
             }

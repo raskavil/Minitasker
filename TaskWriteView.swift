@@ -3,7 +3,7 @@ import SwiftUI
 struct TaskWriteView: View {
     
     struct Model {
-        let id: Int
+        let id: String
         var title: String
         var priority: Task.Priority
         let state: Task.State
@@ -11,19 +11,7 @@ struct TaskWriteView: View {
         var subtasks: [(name: String, status: Bool)]
         var deadline: Date
         var isDateActivated: Bool
-        
-        static func defaultModel(id: Int) -> Self {
-            .init(
-                id: id,
-                title: "New task",
-                priority: .medium,
-                state: .todo,
-                description: .localized("task_write_view.default_text"),
-                subtasks: [("Subtask", false)],
-                deadline: Calendar.current.startOfDay(for: .now),
-                isDateActivated: false
-            )
-        }
+        let isPinned: Bool
     }
 
     @Environment(\.dismiss) private var dismiss
@@ -38,7 +26,8 @@ struct TaskWriteView: View {
                 textView
                 deadlineView
                 subtasksView
-            }.padding(10)
+            }
+            .padding(10)
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -127,9 +116,53 @@ struct TaskWriteView: View {
     }
 }
 
+extension TaskWriteView.Model {
+
+    static func defaultModel(id: String) -> Self {
+        .init(
+            id: id,
+            title: "New task",
+            priority: .medium,
+            state: .todo,
+            description: .localized("task_write_view.default_text"),
+            subtasks: [("Subtask", false)],
+            deadline: Calendar.current.startOfDay(for: .now),
+            isDateActivated: false,
+            isPinned: false
+        )
+    }
+    
+    var task: Task {
+        .init(
+            id: id,
+            priority: priority,
+            title: title,
+            state: state,
+            description: description,
+            subtasks: subtasks.map { .init(title: $0.name, done: $0.status) },
+            deadline: isDateActivated ? deadline : nil,
+            isPinned: isPinned
+        )
+    }
+    
+    init(task: Task) {
+        self = .init(
+            id: task.id,
+            title: task.title,
+            priority: task.priority,
+            state: task.state,
+            description: task.description,
+            subtasks: task.subtasks.map { ($0.title, $0.done) },
+            deadline: task.deadline ?? Calendar.current.startOfDay(for: .now),
+            isDateActivated: task.deadline != nil,
+            isPinned: task.isPinned
+        )
+    }
+}
+
 struct TaskWriteView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TaskWriteView(model: TaskWriteView.Model.defaultModel(id: 14), taskUpdated: { _ in return })
+        TaskWriteView(model: TaskWriteView.Model.defaultModel(id: "14"), taskUpdated: { _ in return })
     }
 }
