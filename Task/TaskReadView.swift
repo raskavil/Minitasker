@@ -18,7 +18,8 @@ struct TaskReadView: View {
                 textView
                 deadlineView
                 subtasksView
-            }.padding(10)
+            }
+            .padding(10)
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -65,6 +66,7 @@ struct TaskReadView: View {
             )
             .foregroundColor(.primary)
             .transaction { $0.animation = nil }
+            Spacer()
         }
     }
     
@@ -72,8 +74,6 @@ struct TaskReadView: View {
         if model.attributedDescription.description.isEmpty == false {
             Rectangle().frame(height: 1)
             Text(model.attributedDescription)
-        } else {
-            EmptyView()
         }
     }
     
@@ -82,8 +82,6 @@ struct TaskReadView: View {
             Rectangle().frame(height: 1)
             Text(String.localized("task_read_view.deadline")).fontWeight(.bold)
             Text(deadlineString)
-        } else {
-            EmptyView()
         }
     }
     
@@ -108,8 +106,6 @@ struct TaskReadView: View {
                 }
                 .foregroundColor(.primary)
             }
-        } else {
-            EmptyView()
         }
     }
 }
@@ -149,7 +145,9 @@ struct TaskReadView_Previews: PreviewProvider {
     """
 
     static var previews: some View {
-        TaskReadView(model: .dummy, taskUpdated: { _ in return })
+        NavigationStack {
+            TaskReadView(model: .dummy, taskUpdated: { _ in return })
+        }
     }
 }
 

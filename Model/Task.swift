@@ -1,7 +1,7 @@
 import Foundation
 import SupportPackage
 
-struct Task: Hashable, Codable {
+struct Task: Hashable, Codable, Identifiable {
     
     struct Subtask: Hashable, Codable {
         var title: String
