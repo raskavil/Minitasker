@@ -1,7 +1,7 @@
 import Foundation
 import SupportPackage
 
-struct Group: Hashable, Codable {
+struct Group: Hashable, Codable, Identifiable {
 
     let id: String
     let timestamp: Date

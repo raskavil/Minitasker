@@ -9,12 +9,23 @@ struct MinitaskerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                TaskList()
+            TabView {
+                NavigationView {
+                    TaskList()
+                }
+                .environmentObject(actionService)
+                .navigationViewStyle(.stack)
+                .accentColor(.primary)
+                .tabItem { Label("Tasks", systemImage: "list.bullet") }
+                NavigationView {
+                    GroupList(groups: [
+                        .init(id: "", title: "Grupka1", tasks: ["sds"], deadline: nil)
+                    ])
+                }
+                .navigationViewStyle(.stack)
+                .accentColor(.primary)
+                .tabItem { Label("Groups", systemImage: "rectangle.3.group") }
             }
-            .environmentObject(actionService)
-            .navigationViewStyle(.stack)
-            .accentColor(.primary)
         }
     }
 }

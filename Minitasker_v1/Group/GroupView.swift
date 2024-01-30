@@ -15,6 +15,7 @@ struct GroupView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
                 title
+                progressIndicator
                 taskSection(for: .todo, value: $todoTasksExpanded)
                 taskSection(for: .inProgress, value: $inProgressTasksExpanded)
                 taskSection(for: .done, value: $doneTasksExpanded)
@@ -33,6 +34,31 @@ struct GroupView: View {
             .lineLimit(3)
             .font(.title.bold())
             .padding(.bottom, 8)
+    }
+    
+    private var progressIndicator: some View {
+        RoundedRectangle(cornerRadius: 2)
+            .stroke(.black, lineWidth: 1)
+            .frame(height: 10)
+            .overlay {
+                GeometryReader { proxy in
+                    HStack(spacing: 0) {
+                        Spacer(minLength: 0)
+                        Rectangle()
+                            .foregroundStyle(.gray)
+                            .frame(
+                                width: proxy.size.width 
+                                * Double(tasks.filter({ $0.state == .inProgress }).count)
+                                / Double(tasks.count))
+                        Rectangle()
+                            .frame(
+                                width: proxy.size.width 
+                                * Double(tasks.filter({ $0.state == .done }).count)
+                                / Double(tasks.count)
+                            )
+                    }
+                }
+            }
     }
     
     private func taskSection(for state: Task.State, value: Binding<Bool>) -> some View {

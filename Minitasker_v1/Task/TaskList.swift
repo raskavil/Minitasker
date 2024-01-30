@@ -16,37 +16,35 @@ struct TaskList: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             List(filters.filter(dataModel.tasks), id: \.self) { model in
-                if let task = dataModel.tasks.first(where: { $0.id == model.id }) {
-                    ZStack {
-                        TaskCell(model: model)
-                        NavigationLink(
-                            destination: TaskReadView(
-                                model: model,
-                                taskUpdated: { dataModel.updateTask($0) }
-                            )
-                        ) { EmptyView() }.opacity(0)
-                    }
-                        .foregroundColor(.primary)
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Button(
-                                role: .destructive,
-                                action: ({
-                                    withAnimation(.linear) { dataModel.removeTask(task) }
-                                })
-                            ) {
-                                Label(String.localized("task_list.delete"), systemImage: "trash")
-                            }
-                        }
-                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            Button(action: {
-                                dataModel.updateTask(model.update(lens: Task.isPinned, to: !model.isPinned))
-                            }) {
-                                Label(String.localized("task_list.pin"), systemImage: "pin").tint(.yellow)
-                            }
-                        }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(.init(top: 4, leading: 20, bottom: 4, trailing: 20))
+                ZStack {
+                    TaskCell(model: model)
+                    NavigationLink(
+                        destination: TaskReadView(
+                            model: model,
+                            taskUpdated: { dataModel.updateTask($0) }
+                        )
+                    ) { EmptyView() }.opacity(0)
                 }
+                .foregroundColor(.primary)
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button(
+                        role: .destructive,
+                        action: ({
+                            withAnimation(.linear) { dataModel.removeTask(model) }
+                        })
+                    ) {
+                        Label(String.localized("task_list.delete"), systemImage: "trash")
+                    }
+                }
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button(action: {
+                        dataModel.updateTask(model.update(lens: Task.isPinned, to: !model.isPinned))
+                    }) {
+                        Label(String.localized("task_list.pin"), systemImage: "pin").tint(.yellow)
+                    }
+                }
+                .listRowSeparator(.hidden)
+                .listRowInsets(.init(top: 4, leading: 20, bottom: 4, trailing: 20))
             }
             .searchable(text: $filters.searchText)
             .listStyle(.plain)
